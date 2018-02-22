@@ -5,7 +5,6 @@ import * as actions from '../actions';
 
 class Payments extends Component {
 	render() {
-		console.log('this.props', this.props);
 		return (
 			<StripeCheckout
 				name="Emaily"
