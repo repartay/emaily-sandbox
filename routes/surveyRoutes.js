@@ -22,7 +22,7 @@ module.exports = app => {
 			title,
 			subject,
 			body,
-			recipients: 
+			recipients: recipients.split(',').map(email => { return { email: email }})
 		});
 		// 3. call save on new instance
 
