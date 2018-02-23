@@ -9,6 +9,8 @@ const mongoose = require('mongoose');
 const requireLogin = require('../middlewares/requireLogin');
 // 2. user has enough credits
 const requireCredits = require('../middlewares/requireCredits');
+const Mailer = require('../services/Mailer');
+const surveyTemplate = require('../services/emailTemplates/surveyTemplate');
 
 const Survey = mongoose.model('surveys');
 
@@ -26,7 +28,13 @@ module.exports = app => {
 			_user: req.user.id,
 			dateSent: Date.now()
 		});
-		// 3. call save on new instance
+		// 3a. Send the email. 2nd argument will be template
+		const mailer = new Mailer(survey, surveyTemplate(survey));
+
+		// 3b. did it send successfully?
+
+		// 4. if YES, call save on new instance. if NO, alert message
+		// 5. route handler complete :-)
 
 	});
 };
