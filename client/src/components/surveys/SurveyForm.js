@@ -1,7 +1,15 @@
 import React, { Component } from 'react';
 import { reduxForm, Field } from 'redux-form';
+import SurveyField from './SurveyField';
 
 class SurveyForm extends Component {
+	renderFields() {
+		return(
+			<div>
+				<Field type="text" name="title" component={SurveyField} />
+			</div>
+		);
+	}
 	render() {
 		return (
 			<div>
@@ -9,11 +17,7 @@ class SurveyForm extends Component {
 					<h2>Survey Form</h2>
 					<div>
 						<label>Survey Title</label>
-						<Field
-							type="text"
-							name="surveyTitle"
-							component="input"
-						/>
+						{this.renderFields()}				
 					</div>
 					<button className="btn waves-effect waves-light" type="submit">
 						<i className="material-icons right">send</i>
